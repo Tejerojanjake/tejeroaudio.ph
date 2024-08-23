@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile Page</title>
+    <style>
+        body {
+            background-color: rgb(15, 15, 15);
+            font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-info {
+            text-align: center;
+            padding: 20px;
+        }
+        .profile-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 5px solid #727272;
+            overflow: hidden;
+        }
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .button-container a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #0206ff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .button-container a:hover {
+            background-color: #0000d4;
+        }
+        .container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .login-container {
+            background: #ffffff;
+            color: #000000;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+            margin-right: 20px; /* Space between login box and audio */
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .input-group input[type="text"],
+        .input-group input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: #d41e1e;
+            margin-top: 10px;
+        }
+        /* Hide audio player */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-info">
+        <h1>DJ JANJAKE REMIX 2018 (Full Album)</h1>
+        <p>Login to your Account to access Free Download!</p>
+        <div class="button-container">
+            <a href="https://www.youtube.com/@djjanjakeremix6765">VIEW CHANNEL</a>
+        </div>
+        <div class="profile-container">
+            <img src="https://yt3.googleusercontent.com/ytc/AIdro_lBJI8enMUEufJmIh-QqYhNcJpvBZLRU-ll-En_cf3B4nk=s160-c-k-c0x00ffffff-no-rj" alt="Profile Image">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="login-container">
+            <h1>Login</h1>
+            <form id="loginForm" onsubmit="return validateLogin()">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit">LOGIN</button>
+                <p class="error-message" id="errorMessage"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="loginFailAudio" src="https://archive.org/download/YirumaKissTheRain_201602/Yiruma-KissTheRain.mp3" preload="auto"></audio>
+
+    <script>
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const loginFailAudio = document.getElementById('loginFailAudio');
+            
+            if (username === '' || password === '') {
+                errorMessage.textContent = 'Please fill out both fields.';
+                return false;
+            }
+            
+            // Example validation: Check if username is 'janjaketejero' and password is '54321'
+            if (username === 'janjaketejero' && password === '54321') {
+                window.location.href = 'https://www.mediafire.com/file/8l7ju52b6wy9yxa/Dj_JanJake_Remix_2018_%2528Full_Pack%2529.rar/file';
+                return false;
+            } else {
+                errorMessage.textContent = 'Invalid password. Ayaw na pugsa ug dili sya ganahan mosulod sa imong kasing kasing :( ';
+                loginFailAudio.play(); // Play audio on login failure
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
